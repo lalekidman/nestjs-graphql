@@ -5,4 +5,4 @@ import { BookService } from './books.services'
   controllers: [BooksController],
   providers: [BookService],
 })
-export class ProductsModule {}
+export class BookModule {}
