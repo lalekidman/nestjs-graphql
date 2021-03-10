@@ -1,11 +1,11 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import * as morgan from 'morgan'
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BookModule } from './books/books.module';
 
 import { GraphQLModule } from '@nestjs/graphql'
 import { MongooseModule } from '@nestjs/mongoose';
-import { LoggerMiddleware } from './middlewares/logger.middleware';
 @Module({
   imports: [
     BookModule,
@@ -17,4 +17,13 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(morgan('dev'))
+      .forRoutes({
+        path: '/',
+        method: RequestMethod.ALL
+      })
+  }
+}
