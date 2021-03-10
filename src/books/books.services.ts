@@ -55,8 +55,7 @@ export class BookService {
       if (!removedBook) {
         throw new Error('No data found.')
       }
-      return removedBook
-      // return removedBook.remove()
+      return removedBook.remove()
     } catch (error) {
       throw error
     }
