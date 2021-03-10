@@ -4,8 +4,9 @@ import { IBookInputEntity } from './interfaces';
 @Controller('books')
 export class BooksController {
   constructor (private readonly bookService: BookService) {}
-  @Get('/')
+  @Get()
   public getBooks() {
+    console.log('objecxxxt :>> ');
     return this.bookService.getBooks();
   }
   @Post('/')
