@@ -4,7 +4,7 @@ import {BookService} from './books.services'
 export class BooksController {
   constructor (private readonly bookService: BookService) {}
   @Get('/')
-  getHello(): string {
-    return this.bookService.getHello();
+  getHello() {
+    return this.bookService.getBooks();
   }
 }

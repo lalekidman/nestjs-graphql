@@ -112,9 +112,7 @@ export default abstract class GeneralDBCommands<T extends Document, K> {
     return this.collectionModel.updateMany(<any>query, <any>{
       $set: data
     })
-    .then((result) => {
-      return <T[]>result
-    })
+    .exec()
   }
   /**
    * update single document
