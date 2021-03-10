@@ -1,5 +1,9 @@
 import {Schema} from 'mongoose'
 export const BookSchema = new Schema({
+  _id: {
+    type: String,
+    default: ''
+  },
   name: {
     type: String,
     default: ''

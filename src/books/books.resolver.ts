@@ -18,7 +18,14 @@ export class BookResolver {
   }
   @Mutation(() => BookGQuery)
   public async createBook (@Args('input') input: BookGQInput) {
-    console.log('input :>> ', input);
     return this.bookService.saveBook(input)
+  }
+  @Mutation(() => BookGQuery)
+  public async updateBook (@Args('bookId') bookId: string, @Args('input') input: BookGQInput) {
+    return this.bookService.updateBook(bookId, input)
+  }
+  @Mutation(() => BookGQuery)
+  public async removeBook (@Args('bookId') bookId: string) {
+    return this.bookService.removeBook(bookId)
   }
 }

@@ -1,4 +1,5 @@
-import { ObjectType, Field, Float, Int, ID } from 'type-graphql'
+// import { ObjectType, Field, Float, Int, ID } from 'type-graphql'
+import {ObjectType, Field, Float, Int, ID} from '@nestjs/graphql'
 import {
   IBookEntity
 } from '../interfaces/index'

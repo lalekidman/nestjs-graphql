@@ -2,6 +2,26 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type BookGQuery {
+  _id: String!
+  name: String!
+  author: String!
+  price: Float!
+  totalPurchasedCount: Float!
+}
+
 type Query {
-  hello: String!
+  getBooks: [BookGQuery!]!
+}
+
+type Mutation {
+  createBook(input: BookGQInput!): BookGQuery!
+  updateBook(input: BookGQInput!, bookId: String!): BookGQuery!
+  removeBook(bookId: String!): BookGQuery!
+}
+
+input BookGQInput {
+  name: String!
+  author: String
+  price: Float!
 }
