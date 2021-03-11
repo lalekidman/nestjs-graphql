@@ -1,15 +1,17 @@
+import { UseGuards } from '@nestjs/common'
 import {
   Resolver,
   Query,
   Mutation,
   Args
 } from '@nestjs/graphql'
+import { GqlAuthGuard } from 'src/auth/guards/qgl-auth.guard'
 import { BookService } from './books.services'
 import {BookGQInput} from './input/book.input'
 import {BookGQuery} from './object-type/books.object-type'
 @Resolver()
+@UseGuards(GqlAuthGuard)
 export class BookResolver {
-
   constructor( private readonly bookService: BookService) {}
   
   @Query(() => [BookGQuery])

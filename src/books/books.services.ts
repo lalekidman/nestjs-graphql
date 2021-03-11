@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { IBookCollectionModel, IBookEntity, IBookInputEntity } from './interfaces';
@@ -40,7 +40,9 @@ export class BookService {
       const updatedBook = await this.BookModel.findOne({
         _id: bookId
       })
-
+      if (!updatedBook) {
+        throw new BadRequestException
+      }
       updatedBook.set(bookInput)
       return updatedBook.save()
     } catch (error) {
