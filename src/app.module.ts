@@ -7,11 +7,14 @@ import { UserModule } from './users/users.module';
 
 import { GraphQLModule } from '@nestjs/graphql'
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     //@modules
     BookModule,
     UserModule,
+    AuthModule,
+    //
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql'
     }),
